@@ -20,7 +20,7 @@ def ensure_deno():
             check=True,
         )
 
-    os.environ["PATH"] = deno_dir + "/bin:" + os.environ["PATH"]
+    os.environ["PATH"] = os.path.join(deno_dir, "bin") + ":" + os.environ["PATH"]
 
     if not shutil.which("deno"):
         raise RuntimeError("Deno installation failed.")
