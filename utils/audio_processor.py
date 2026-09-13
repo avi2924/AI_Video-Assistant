@@ -38,14 +38,11 @@ def download_youtube_audio(url: str) -> str:
     )
 
     ydl_opts = {
-        "format": "bestaudio/best",
+        "format": "ba[ext=m4a]/ba/best",
         "outtmpl": output_path,
-
-        # IMPORTANT
         "js_runtimes": {
             "deno": {}
         },
-
         "postprocessors": [
             {
                 "key": "FFmpegExtractAudio",
@@ -53,16 +50,14 @@ def download_youtube_audio(url: str) -> str:
                 "preferredquality": "192",
             }
         ],
-
         "quiet": False,
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
-
-        filename = ydl.prepare_filename(info)
-
-        filename = os.path.splitext(filename)[0] + ".wav"
+        filename = os.path.splitext(
+            ydl.prepare_filename(info)
+        )[0] + ".wav"
 
     return filename
 
