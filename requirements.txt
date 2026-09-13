@@ -9,8 +9,9 @@ audioop-lts>=0.2.2
 
 # ── Speech-to-Text (local Whisper) ────────────────────────────────────────────
 openai-whisper>=20231117          # OpenAI Whisper (runs locally)
-torchaudio>=2.2.0                 # Audio utilities for PyTorch
-torch==2.14.0
+torch==2.9.0
+torchvision==0.24.0
+torchaudio==2.9.0
 
 # ── Translation (Hindi → English) ─────────────────────────────────────────────
 deep-translator>=1.11.4           # Lightweight translation wrapper (Google backend)
